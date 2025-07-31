@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joseph Boidy - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Joseph Boidy</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#future" class="nav-link">Future</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#education" class="nav-link">Education</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#experience" class="nav-link">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Joseph Boidy</h1>
+                    <h2 class="hero-subtitle">Computer Engineering Student</h2>
+                    <p class="hero-description">
+                        Transforming tomorrow's technology through innovative engineering solutions. 
+                        As a Computer Engineering student at the University of Oklahoma, I bridge the gap between 
+                        hardware and software to create systems that power the future.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-picture">
+                        <!-- Replace the src with your actual profile picture -->
+                        <img src="profile.jpg" alt="Joseph Boidy" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="profile-placeholder" style="display: none; width: 100%; height: 100%; background: #e2e8f0; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 3rem;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profile-overlay">
+                            <div class="profile-info">
+                                <h3>Joseph Boidy</h3>
+                                <p>Computer Engineering Student</p>
+                                <div class="profile-links">
+                                    <a href="https://github.com/LeBoid" target="_blank" aria-label="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/joseph-boidy" target="_blank" aria-label="LinkedIn">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Possibilities Section -->
+    <section id="future" class="future-possibilities">
+        <div class="container">
+            <h2 class="section-title">The Future of Computer Engineering</h2>
+            <div class="future-grid">
+                <div class="future-card" data-category="ai-ml">
+                    <div class="future-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Artificial Intelligence & Machine Learning</h3>
+                    <p>Developing intelligent systems that learn, adapt, and solve complex problems autonomously.</p>
+                    <div class="future-skills">
+                        <span class="future-skill">Neural Networks</span>
+                        <span class="future-skill">Deep Learning</span>
+                        <span class="future-skill">Computer Vision</span>
+                    </div>
+                </div>
+                <div class="future-card" data-category="iot">
+                    <div class="future-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Internet of Things (IoT)</h3>
+                    <p>Connecting devices and systems to create smart, interconnected environments.</p>
+                    <div class="future-skills">
+                        <span class="future-skill">Embedded Systems</span>
+                        <span class="future-skill">Sensor Networks</span>
+                        <span class="future-skill">Edge Computing</span>
+                    </div>
+                </div>
+                <div class="future-card" data-category="robotics">
+                    <div class="future-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Robotics & Automation</h3>
+                    <p>Building intelligent machines that enhance human capabilities and productivity.</p>
+                    <div class="future-skills">
+                        <span class="future-skill">Control Systems</span>
+                        <span class="future-skill">Computer Vision</span>
+                        <span class="future-skill">Autonomous Navigation</span>
+                    </div>
+                </div>
+                <div class="future-card" data-category="cybersecurity">
+                    <div class="future-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity</h3>
+                    <p>Protecting digital systems and data from evolving threats and vulnerabilities.</p>
+                    <div class="future-skills">
+                        <span class="future-skill">Cryptography</span>
+                        <span class="future-skill">Network Security</span>
+                        <span class="future-skill">Ethical Hacking</span>
+                    </div>
+                </div>
+                <div class="future-card" data-category="quantum">
+                    <div class="future-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>Quantum Computing</h3>
+                    <p>Harnessing quantum mechanics to solve problems beyond classical computing limits.</p>
+                    <div class="future-skills">
+                        <span class="future-skill">Quantum Algorithms</span>
+                        <span class="future-skill">Quantum Circuits</span>
+                        <span class="future-skill">Quantum Cryptography</span>
+                    </div>
+                </div>
+                <div class="future-card" data-category="biotech">
+                    <div class="future-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>Biomedical Engineering</h3>
+                    <p>Integrating technology with healthcare to improve medical diagnostics and treatment.</p>
+                    <div class="future-skills">
+                        <span class="future-skill">Medical Devices</span>
+                        <span class="future-skill">Bioinformatics</span>
+                        <span class="future-skill">Digital Health</span>
+                    </div>
+                </div>
+            </div>
+            <div class="career-path">
+                <h3>My Career Journey</h3>
+                <div class="path-timeline">
+                    <div class="path-step current">
+                        <div class="step-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="step-content">
+                            <h4>Computer Engineering Student</h4>
+                            <p>Building foundations in hardware and software</p>
+                            <span class="step-year">2023 - Present</span>
+                        </div>
+                    </div>
+                    <div class="path-step future">
+                        <div class="step-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="step-content">
+                            <h4>Software Engineer</h4>
+                            <p>Developing innovative applications and systems</p>
+                            <span class="step-year">2025 - 2027</span>
+                        </div>
+                    </div>
+                    <div class="path-step future">
+                        <div class="step-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="step-content">
+                            <h4>Systems Architect</h4>
+                            <p>Designing complex integrated solutions</p>
+                            <span class="step-year">2027 - 2030</span>
+                        </div>
+                    </div>
+                    <div class="path-step future">
+                        <div class="step-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="step-content">
+                            <h4>Technology Leader</h4>
+                            <p>Leading teams and driving innovation</p>
+                            <span class="step-year">2030+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a dedicated Computer Engineering student at the University of Oklahoma with a passion for 
+                        technology and innovation. My academic journey has equipped me with strong foundations in 
+                        programming, data structures, and electrical engineering principles.
+                    </p>
+                    <p>
+                        I'm actively involved in research projects, particularly in the field of data science and 
+                        artificial intelligence. My work includes analyzing disinformation spread on social media 
+                        platforms and developing autonomous navigation systems.
+                    </p>
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Norman, OK</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>405-992-6078</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>Gnamien.A.Boidy-2@ou.edu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Certifications</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Developer Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Gephi</span>
+                        <span class="skill-tag">Eclipse</span>
+                        <span class="skill-tag">Jupyter Notebook</span>
+                        <span class="skill-tag">RStudio</span>
+                        <span class="skill-tag">MobaXterm</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Undergraduate Data Science and Analytics Certificate</span>
+                        <span class="skill-tag">Google Certification of Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-card">
+                <div class="education-header">
+                    <h3>University of Oklahoma</h3>
+                    <span class="education-date">Jan 2023 - December 2026</span>
+                </div>
+                <div class="education-details">
+                    <p class="degree">Bachelor of Science in Computer Engineering</p>
+                    <p class="minor">Minor in Computer Science</p>
+                    <p class="gpa">GPA: 3.35/4.00</p>
+                </div>
+                <div class="coursework">
+                    <h4>Relevant Coursework:</h4>
+                    <div class="course-tags">
+                        <span class="course-tag">Artificial Intelligence</span>
+                        <span class="course-tag">Electrical Circuit I</span>
+                        <span class="course-tag">Data Structures & Algorithms</span>
+                        <span class="course-tag">Discrete Structures</span>
+                        <span class="course-tag">Digital Design</span>
+                        <span class="course-tag">Digital Signal and Filtering</span>
+                        <span class="course-tag">Programming Structures and Abstractions</span>
+                        <span class="course-tag">Probability & Statistics</span>
+                        <span class="course-tag">Random Processing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Relevant Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Research Assistant - Disinformation Analysis</h3>
+                        <span class="project-date">June 2024 - August 2024</span>
+                    </div>
+                    <p class="project-location">University of Oklahoma, Norman, Oklahoma</p>
+                    <ul class="project-details">
+                        <li>Collaborating with Dr. Cheng Samuel in the ECE department and the Data Institute for Societal Challenges to research and analyze the spread of disinformation on YouTube.</li>
+                        <li>Utilizing the YouTube Data API to collect large datasets, including metadata, comments, and video statistics, focusing on content flagged for disinformation.</li>
+                        <li>Developing and implementing Python scripts for data scraping, cleaning, and preprocessing to facilitate further analysis.</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Multiway Search Tree (M-Tree)</h3>
+                        <span class="project-date">October 2024</span>
+                    </div>
+                    <ul class="project-details">
+                        <li>Developed a rebuild operation for dynamic tree balancing, ensuring efficiency in large datasets.</li>
+                        <li>Applied concepts of memory management and pointer-based tree structures.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/LeBoid/MTree-Project" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Autonomous Road Navigation with NVIDIA JetBot</h3>
+                        <span class="project-date">Jan 2025 - March 2025</span>
+                    </div>
+                    <ul class="project-details">
+                        <li>Developed road-following navigation using a ResNet18-based regression model for steering prediction.</li>
+                        <li>Programmed JetBot with Python, integrating TensorRT-optimized models for real-time image inference.</li>
+                        <li>Implemented object avoidance using pre-trained collision detection models.</li>
+                        <li>Investigated and documented limitations of person-following due to broken dependencies, ensuring project integrity.</li>
+                        <li>Demonstrated successful real-time navigation in controlled environments with video documentation.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/AI2025-final-project-submission/Team_4/tree/main" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card interactive-project">
+                    <div class="project-header">
+                        <h3>Interactive Portfolio Design</h3>
+                        <span class="project-date">December 2024</span>
+                    </div>
+                    <p class="project-location">Personal Portfolio Website</p>
+                    <ul class="project-details">
+                        <li>Designed and developed a responsive portfolio website with modern animations and interactive elements.</li>
+                        <li>Implemented dynamic typing effects, hover animations, and scroll-triggered animations using JavaScript.</li>
+                        <li>Created an interactive "Future Possibilities" section showcasing computer engineering career paths.</li>
+                        <li>Integrated professional profile picture with hover effects and social media links.</li>
+                        <li>Built with HTML5, CSS3, and JavaScript for optimal performance and user experience.</li>
+                    </ul>
+                    <div class="project-demo">
+                        <h4>Try the Interactive Features:</h4>
+                        <div class="demo-buttons">
+                            <button class="demo-btn" onclick="triggerTypingEffect()">
+                                <i class="fas fa-keyboard"></i> Typing Effect
+                            </button>
+                            <button class="demo-btn" onclick="triggerFutureAnimation()">
+                                <i class="fas fa-rocket"></i> Future Animation
+                            </button>
+                            <button class="demo-btn" onclick="triggerProfileAnimation()">
+                                <i class="fas fa-user"></i> Profile Animation
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#future" class="project-link">
+                            <i class="fas fa-eye"></i> View Future Section
+                        </a>
+                        <a href="#home" class="project-link">
+                            <i class="fas fa-home"></i> Back to Hero
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Leadership Experience</h2>
+            <div class="experience-card">
+                <div class="experience-header">
+                    <h3>Student Supervisor</h3>
+                    <span class="experience-date">March 2023 - Present</span>
+                </div>
+                <p class="experience-location">Residential College (Dunham/Headington), University of Oklahoma, Norman, OKC</p>
+                <div class="experience-details">
+                    <div class="experience-item">
+                        <h4><i class="fas fa-users"></i> Leading Staff</h4>
+                        <p>Instructing and guiding employees in the back of the kitchen to ensure that every member of staff is executing their job in an effective and efficient manner while simultaneously staying within company guidelines and regulations.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4><i class="fas fa-check-circle"></i> Quality Assurance</h4>
+                        <p>Carried out routine checks on all of the restaurant's food and food storage, including inspection of all poultry, meat, produce, and dairy products and making sure all refrigerators stay within a certain temperature range in order to preserve food for as long as possible.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4><i class="fas fa-graduation-cap"></i> Training and Development</h4>
+                        <p>Developed and implemented comprehensive training programs for new hires, ensuring they quickly adapt to the workflow and standards of the kitchen. Mentored junior staff, providing guidance and support to help them excel in their roles.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4><i class="fas fa-handshake"></i> Conflict Resolution</h4>
+                        <p>Successfully mediated conflicts among staff, fostering a collaborative and positive work environment. Addressed employee concerns promptly and fairly, ensuring that any issues were resolved in a manner that maintained team cohesion and morale.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="organizations">
+                <h3>Organizations</h3>
+                <div class="org-tags">
+                    <span class="org-tag">Artificial Intelligence Organization at the University of Oklahoma (OUAI)</span>
+                    <span class="org-tag">Data Science and Analytics Club</span>
+                    <span class="org-tag">OU IEEE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>Gnamien.A.Boidy-2@ou.edu</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>405-992-6078</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Norman, OK</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/LeBoid" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/joseph-boidy" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Joseph Boidy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
