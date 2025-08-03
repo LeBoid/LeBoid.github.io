@@ -1,364 +1,466 @@
-// Mobile Navigation Toggle
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-}));
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Navbar background change on scroll
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = 'none';
+// Theme Management
+class ThemeManager {
+    constructor() {
+        this.theme = localStorage.getItem('theme') || 'light';
+        this.init();
     }
-});
 
-// Active navigation link highlighting
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
+    init() {
+        document.documentElement.setAttribute('data-theme', this.theme);
+        this.setupThemeToggle();
+        this.updateThemeIcon();
+    }
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Simple fade-in animation for sections
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe all sections for fade-in effect and initialize future animations
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(section);
-    });
-
-    // Future Possibilities Section Animations
-    // Animate future cards on scroll
-    const futureCards = document.querySelectorAll('.future-card');
-    const futureObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                entry.target.style.transition = `all 0.6s ease ${index * 0.2}s`;
-            }
-        });
-    }, { threshold: 0.1 });
-
-    futureCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(50px)';
-        futureObserver.observe(card);
-    });
-
-    // Interactive future card effects
-    futureCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            const icon = card.querySelector('.future-icon i');
-            const skills = card.querySelectorAll('.future-skill');
-            
-            // Animate icon
-            if (icon) {
-                icon.style.transform = 'scale(1.2) rotate(10deg)';
-                icon.style.transition = 'all 0.3s ease';
-            }
-            
-            // Animate skills with delay
-            skills.forEach((skill, index) => {
-                setTimeout(() => {
-                    skill.style.transform = 'translateY(-5px) scale(1.05)';
-                    skill.style.background = 'rgba(255, 255, 255, 0.4)';
-                }, index * 100);
+    setupThemeToggle() {
+        const toggleBtn = document.getElementById('theme-toggle-btn');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                this.toggleTheme();
             });
-        });
+        }
+    }
 
-        card.addEventListener('mouseleave', () => {
-            const icon = card.querySelector('.future-icon i');
-            const skills = card.querySelectorAll('.future-skill');
-            
-            // Reset icon
-            if (icon) {
-                icon.style.transform = 'scale(1) rotate(0deg)';
-            }
-            
-            // Reset skills
-            skills.forEach(skill => {
-                skill.style.transform = 'translateY(0) scale(1)';
-                skill.style.background = 'rgba(255, 255, 255, 0.2)';
+    toggleTheme() {
+        this.theme = this.theme === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', this.theme);
+        localStorage.setItem('theme', this.theme);
+        this.updateThemeIcon();
+        this.animateThemeTransition();
+    }
+
+    updateThemeIcon() {
+        const lightIcon = document.querySelector('.light-icon');
+        const darkIcon = document.querySelector('.dark-icon');
+        
+        if (this.theme === 'dark') {
+            lightIcon.style.display = 'none';
+            darkIcon.style.display = 'block';
+        } else {
+            lightIcon.style.display = 'block';
+            darkIcon.style.display = 'none';
+        }
+    }
+
+    animateThemeTransition() {
+        document.body.style.transition = 'all 0.3s ease';
+        setTimeout(() => {
+            document.body.style.transition = '';
+        }, 300);
+    }
+}
+
+// Navigation Management
+class NavigationManager {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.setupMobileMenu();
+        this.setupSmoothScrolling();
+        this.setupScrollEffects();
+        this.setupActiveNavigation();
+    }
+
+    setupMobileMenu() {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
             });
-        });
-    });
 
-    // Career path timeline animations
-    const pathSteps = document.querySelectorAll('.path-step');
-    const pathObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                entry.target.style.transition = `all 0.8s ease ${index * 0.3}s`;
-            }
-        });
-    }, { threshold: 0.2 });
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+        }
+    }
 
-    pathSteps.forEach(step => {
-        step.style.opacity = '0';
-        step.style.transform = 'translateY(30px)';
-        pathObserver.observe(step);
-    });
-
-    // Interactive career path steps
-    pathSteps.forEach(step => {
-        step.addEventListener('mouseenter', () => {
-            const content = step.querySelector('.step-content');
-            const icon = step.querySelector('.step-icon i');
-            
-            if (content) {
-                content.style.transform = 'translateY(-5px) scale(1.02)';
-                content.style.background = 'rgba(255, 255, 255, 0.2)';
-            }
-            
-            if (icon) {
-                icon.style.transform = 'scale(1.1)';
-                icon.style.transition = 'all 0.3s ease';
-            }
-        });
-
-        step.addEventListener('mouseleave', () => {
-            const content = step.querySelector('.step-content');
-            const icon = step.querySelector('.step-icon i');
-            
-            if (content) {
-                content.style.transform = 'translateY(0) scale(1)';
-                content.style.background = 'rgba(255, 255, 255, 0.1)';
-            }
-            
-            if (icon) {
-                icon.style.transform = 'scale(1)';
-            }
-        });
-    });
-
-    // Add click-to-explore functionality for future cards
-    futureCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const category = card.getAttribute('data-category');
-            const title = card.querySelector('h3').textContent;
-            
-            // Create a modal or tooltip with more information
-            const info = {
-                'ai-ml': 'Artificial Intelligence and Machine Learning are revolutionizing how we solve complex problems. From autonomous vehicles to medical diagnosis, AI is transforming every industry.',
-                'iot': 'The Internet of Things connects billions of devices, creating smart cities, homes, and industries. IoT engineers build the infrastructure of tomorrow.',
-                'robotics': 'Robotics combines mechanical engineering, electronics, and computer science to create intelligent machines that work alongside humans.',
-                'cybersecurity': 'As technology advances, protecting digital systems becomes crucial. Cybersecurity experts defend against evolving threats.',
-                'quantum': 'Quantum computing harnesses quantum mechanics to solve problems impossible for classical computers, revolutionizing cryptography and drug discovery.',
-                'biotech': 'Biomedical engineering merges technology with healthcare, creating medical devices and systems that improve human health and quality of life.'
-            };
-            
-            // Show information in a subtle way
-            const tooltip = document.createElement('div');
-            tooltip.innerHTML = `
-                <h4>${title}</h4>
-                <p>${info[category]}</p>
-            `;
-            tooltip.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: rgba(0, 0, 0, 0.9);
-                color: white;
-                padding: 2rem;
-                border-radius: 12px;
-                max-width: 400px;
-                z-index: 10000;
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                animation: fadeIn 0.3s ease;
-            `;
-            
-            document.body.appendChild(tooltip);
-            
-            // Remove tooltip after 3 seconds or on click
-            setTimeout(() => {
-                if (tooltip.parentNode) {
-                    tooltip.remove();
+    setupSmoothScrolling() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
-            }, 3000);
-            
-            tooltip.addEventListener('click', () => {
-                tooltip.remove();
             });
         });
-    });
+    }
 
-    // Enhanced typing effect for hero description
-    const heroDescription = document.querySelector('.hero-description');
-    if (heroDescription) {
-        const originalText = heroDescription.textContent;
-        heroDescription.textContent = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < originalText.length) {
-                heroDescription.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 30);
+    setupScrollEffects() {
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                if (window.scrollY > 100) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                    navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                    navbar.style.boxShadow = 'none';
+                }
             }
+        });
+    }
+
+    setupActiveNavigation() {
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    }
+}
+
+// Animation Manager
+class AnimationManager {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.setupIntersectionObserver();
+        this.setupSkillBars();
+        this.setupTypingEffect();
+        this.setupHoverEffects();
+    }
+
+    setupIntersectionObserver() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
-        
-        // Start typing effect when section is visible
-        const heroObserver = new IntersectionObserver((entries) => {
+
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    setTimeout(typeWriter, 500);
-                    heroObserver.unobserve(entry.target);
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for fade-in effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    }
+
+    setupSkillBars() {
+        const skillBars = document.querySelectorAll('.skill-fill');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.getAttribute('data-width');
+                    entry.target.style.width = width + '%';
                 }
             });
         }, { threshold: 0.5 });
-        
-        heroObserver.observe(heroDescription);
-    }
-});
 
-// Click-to-copy functionality for contact information
-document.querySelectorAll('.contact-item p').forEach(element => {
-    element.addEventListener('click', function() {
-        const text = this.textContent;
-        navigator.clipboard.writeText(text).then(() => {
-            // Show a simple tooltip
-            const tooltip = document.createElement('div');
-            tooltip.textContent = 'Copied!';
-            tooltip.style.cssText = `
-                position: absolute;
-                background: #2563eb;
-                color: white;
-                padding: 0.5rem 1rem;
-                border-radius: 4px;
-                font-size: 0.9rem;
-                z-index: 1000;
-                pointer-events: none;
-            `;
-            
-            const rect = this.getBoundingClientRect();
-            tooltip.style.left = rect.left + 'px';
-            tooltip.style.top = (rect.top - 40) + 'px';
-            
-            document.body.appendChild(tooltip);
-            
-            setTimeout(() => {
-                tooltip.remove();
-            }, 2000);
+        skillBars.forEach(bar => {
+            skillObserver.observe(bar);
         });
-    });
-});
+    }
 
-// Professional hover effects for cards
-document.querySelectorAll('.project-card, .experience-card, .education-card, .skill-category').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-4px)';
-        card.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.1)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0)';
-        card.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.05)';
-    });
-});
-
-// Simple skill tag hover effects
-document.querySelectorAll('.skill-tag, .course-tag').forEach(tag => {
-    tag.addEventListener('mouseenter', () => {
-        tag.style.transform = 'translateY(-2px)';
-    });
-    
-    tag.addEventListener('mouseleave', () => {
-        tag.style.transform = 'translateY(0)';
-    });
-});
-
-// Professional button hover effects
-document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('mouseenter', () => {
-        btn.style.transform = 'translateY(-2px)';
-    });
-    
-    btn.addEventListener('mouseleave', () => {
-        btn.style.transform = 'translateY(0)';
-    });
-});
-
-// Profile picture hover effect
-const profilePicture = document.querySelector('.profile-picture');
-if (profilePicture) {
-    profilePicture.addEventListener('mouseenter', () => {
-        const overlay = profilePicture.querySelector('.profile-overlay');
-        if (overlay) {
-            overlay.style.transform = 'translateY(0)';
+    setupTypingEffect() {
+        const heroDescription = document.querySelector('.hero-description');
+        if (heroDescription) {
+            const originalText = heroDescription.textContent;
+            heroDescription.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    heroDescription.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 30);
+                }
+            };
+            
+            // Start typing effect when section is visible
+            const heroObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(typeWriter, 500);
+                        heroObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            heroObserver.observe(heroDescription);
         }
-    });
-    
-    profilePicture.addEventListener('mouseleave', () => {
-        const overlay = profilePicture.querySelector('.profile-overlay');
-        if (overlay) {
-            overlay.style.transform = 'translateY(100%)';
-        }
-    });
+    }
+
+    setupHoverEffects() {
+        // Project card hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.1)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.05)';
+            });
+        });
+
+        // Skill tag hover effects
+        document.querySelectorAll('.tech-tag, .research-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', () => {
+                tag.style.transform = 'translateY(-2px)';
+            });
+            
+            tag.addEventListener('mouseleave', () => {
+                tag.style.transform = 'translateY(0)';
+            });
+        });
+    }
 }
+
+// ECE Design Project Manager
+class ECEDesignManager {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.setupTabs();
+        this.setupFilterDemo();
+        this.setupCopyButtons();
+    }
+
+    setupTabs() {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+    }
+
+    setupFilterDemo() {
+        const applyFilterBtn = document.getElementById('apply-filter');
+        const signalTypeSelect = document.getElementById('signal-type');
+        const filterTypeSelect = document.getElementById('filter-type');
+        const canvas = document.getElementById('filter-canvas');
+
+        if (applyFilterBtn && canvas) {
+            applyFilterBtn.addEventListener('click', () => {
+                this.simulateFilter(canvas, signalTypeSelect.value, filterTypeSelect.value);
+            });
+        }
+    }
+
+    simulateFilter(canvas, signalType, filterType) {
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+
+        // Clear canvas
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw background
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--bg-primary');
+        ctx.fillRect(0, 0, width, height);
+
+        // Draw frequency response
+        ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent-primary');
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+
+        for (let x = 0; x < width; x++) {
+            const freq = (x / width) * 4000; // 0-4kHz
+            let magnitude;
+
+            if (filterType === 'lowpass') {
+                // Lowpass filter response
+                const cutoff = 1000; // 1kHz cutoff
+                magnitude = 1 / (1 + Math.pow(freq / cutoff, 4));
+            } else {
+                // Highpass filter response
+                const cutoff = 1000; // 1kHz cutoff
+                magnitude = 1 - (1 / (1 + Math.pow(freq / cutoff, 4)));
+            }
+
+            const y = height - (magnitude * height * 0.8 + height * 0.1);
+            if (x === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
+
+        ctx.stroke();
+
+        // Draw frequency markers
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary');
+        ctx.font = '12px Inter';
+        ctx.textAlign = 'center';
+        
+        for (let freq = 0; freq <= 4000; freq += 1000) {
+            const x = (freq / 4000) * width;
+            ctx.fillText(`${freq}Hz`, x, height - 10);
+        }
+
+        // Update filter info
+        this.updateFilterInfo(signalType, filterType);
+    }
+
+    updateFilterInfo(signalType, filterType) {
+        const passbandEdge = document.getElementById('passband-edge');
+        const stopbandEdge = document.getElementById('stopband-edge');
+        const filterOrder = document.getElementById('filter-order');
+
+        if (filterType === 'lowpass') {
+            passbandEdge.textContent = '250 Hz';
+            stopbandEdge.textContent = '1000 Hz';
+        } else {
+            passbandEdge.textContent = '1000 Hz';
+            stopbandEdge.textContent = '250 Hz';
+        }
+
+        filterOrder.textContent = '12';
+    }
+
+    setupCopyButtons() {
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const text = btn.getAttribute('data-text');
+                navigator.clipboard.writeText(text).then(() => {
+                    this.showCopyNotification(btn);
+                });
+            });
+        });
+    }
+
+    showCopyNotification(button) {
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        button.style.background = '#10b981';
+        
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.style.background = '';
+        }, 2000);
+    }
+}
+
+// Contact Manager
+class ContactManager {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.setupContactLinks();
+    }
+
+    setupContactLinks() {
+        // Email link
+        const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+        emailLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = link.href.replace('mailto:', '');
+                window.open(`mailto:${email}`, '_blank');
+            });
+        });
+
+        // Phone link
+        const phoneElements = document.querySelectorAll('.contact-details p');
+        phoneElements.forEach(element => {
+            if (element.textContent.includes('405-')) {
+                element.style.cursor = 'pointer';
+                element.addEventListener('click', () => {
+                    window.open('tel:405-992-6078', '_blank');
+                });
+            }
+        });
+    }
+}
+
+// Particle System for Hero Section
+class ParticleSystem {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.createParticles();
+    }
+
+    createParticles() {
+        const particleContainer = document.querySelector('.hero-particles');
+        if (!particleContainer) return;
+
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: rgba(59, 130, 246, 0.3);
+                border-radius: 50%;
+                left: ${Math.random() * 100}%;
+                animation: particleFloat ${8 + Math.random() * 4}s linear infinite;
+                animation-delay: ${Math.random() * 8}s;
+            `;
+            particleContainer.appendChild(particle);
+        }
+    }
+}
+
+// Initialize all managers when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new ThemeManager();
+    new NavigationManager();
+    new AnimationManager();
+    new ECEDesignManager();
+    new ContactManager();
+    new ParticleSystem();
+});
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
@@ -393,71 +495,58 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             loader.style.display = 'none';
         }, 500);
+    }
+});
+
+// Add CSS for particle animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes particleFloat {
+        0% {
+            transform: translateY(100vh) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Enhanced scroll animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe all sections for fade-in effect
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
     });
 });
 
-// Interactive Demo Functions
-function triggerTypingEffect() {
-    const heroDescription = document.querySelector('.hero-description');
-    if (heroDescription) {
-        const originalText = heroDescription.textContent;
-        heroDescription.textContent = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < originalText.length) {
-                heroDescription.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 30);
-            }
-        };
-        
-        typeWriter();
-        
-        // Scroll to hero section
-        document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });
-    }
-}
-
-function triggerFutureAnimation() {
-    const futureCards = document.querySelectorAll('.future-card');
-    futureCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(50px)';
-        
-        setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-            card.style.transition = `all 0.6s ease ${index * 0.2}s`;
-        }, 100);
-    });
-    
-    // Scroll to future section
-    document.querySelector('#future').scrollIntoView({ behavior: 'smooth' });
-}
-
-function triggerProfileAnimation() {
-    const profilePicture = document.querySelector('.profile-picture');
-    if (profilePicture) {
-        profilePicture.style.animation = 'none';
-        profilePicture.offsetHeight; // Trigger reflow
-        profilePicture.style.animation = 'float 2s ease-in-out';
-        
-        // Add a pulse effect
-        profilePicture.style.boxShadow = '0 0 0 0 rgba(37, 99, 235, 0.7)';
-        profilePicture.style.animation = 'pulse 2s infinite';
-        
-        setTimeout(() => {
-            profilePicture.style.animation = 'float 6s ease-in-out infinite';
-            profilePicture.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
-        }, 2000);
-    }
-    
-    // Scroll to hero section
-    document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });
-}
-
-// Cursor trail effect
+// Cursor trail effect (optional)
 let mouseX = 0;
 let mouseY = 0;
 let trail = [];
@@ -473,7 +562,7 @@ document.addEventListener('mousemove', (e) => {
     dot.style.top = mouseY + 'px';
     dot.style.width = '4px';
     dot.style.height = '4px';
-    dot.style.backgroundColor = 'rgba(37, 99, 235, 0.6)';
+    dot.style.backgroundColor = 'rgba(59, 130, 246, 0.6)';
     dot.style.borderRadius = '50%';
     dot.style.pointerEvents = 'none';
     dot.style.zIndex = '9999';

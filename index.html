@@ -1,19 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joseph Boidy - Portfolio</title>
+    <title>Joseph Boidy - Computer Engineering Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
 </head>
 <body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="theme-toggle-btn" aria-label="Toggle theme">
+            <i class="fas fa-sun light-icon"></i>
+            <i class="fas fa-moon dark-icon"></i>
+        </button>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#home">Joseph Boidy</a>
+                <a href="#home">
+                    <span class="logo-text">JB</span>
+                    <span class="logo-full">Joseph Boidy</span>
+                </a>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -23,19 +35,13 @@
                     <a href="#about" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#future" class="nav-link">Future</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#skills" class="nav-link">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#education" class="nav-link">Education</a>
-                </li>
-                <li class="nav-item">
                     <a href="#projects" class="nav-link">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#ece-design" class="nav-link">ECE Design</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Skills</a>
                 </li>
                 <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
@@ -51,179 +57,74 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+            <div class="hero-grid"></div>
         </div>
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">Joseph Boidy</h1>
-                    <h2 class="hero-subtitle">Computer Engineering Student</h2>
+                    <div class="hero-badge">
+                        <i class="fas fa-microchip"></i>
+                        <span>Computer Engineering Student</span>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="title-line">Joseph</span>
+                        <span class="title-line">Boidy</span>
+                    </h1>
+                    <p class="hero-subtitle">Bridging Hardware & Software Innovation</p>
                     <p class="hero-description">
-                        Transforming tomorrow's technology through innovative engineering solutions. 
-                        As a Computer Engineering student at the University of Oklahoma, I bridge the gap between 
-                        hardware and software to create systems that power the future.
+                        Passionate Computer Engineering student at the University of Oklahoma, 
+                        specializing in digital signal processing, embedded systems, and AI applications. 
+                        Transforming complex problems into elegant engineering solutions.
                     </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">3.35</span>
+                            <span class="stat-label">GPA</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2</span>
+                            <span class="stat-label">Certifications</span>
+                        </div>
+                    </div>
                     <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            View Projects
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-envelope"></i>
+                            Get In Touch
+                        </a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="profile-picture">
-                        <!-- Replace the src with your actual profile picture -->
-                        <img src="profile.jpg" alt="Joseph Boidy" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <div class="profile-placeholder" style="display: none; width: 100%; height: 100%; background: #e2e8f0; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 3rem;">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="profile-overlay">
-                            <div class="profile-info">
-                                <h3>Joseph Boidy</h3>
-                                <p>Computer Engineering Student</p>
-                                <div class="profile-links">
-                                    <a href="https://github.com/LeBoid" target="_blank" aria-label="GitHub">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/joseph-boidy" target="_blank" aria-label="LinkedIn">
-                                        <i class="fab fa-linkedin"></i>
-                                    </a>
-                                </div>
+                <div class="hero-visual">
+                    <div class="profile-card">
+                        <div class="profile-image">
+                            <img src="profile.jpg" alt="Joseph Boidy" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="profile-placeholder">
+                                <i class="fas fa-user"></i>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Future Possibilities Section -->
-    <section id="future" class="future-possibilities">
-        <div class="container">
-            <h2 class="section-title">The Future of Computer Engineering</h2>
-            <div class="future-grid">
-                <div class="future-card" data-category="ai-ml">
-                    <div class="future-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Artificial Intelligence & Machine Learning</h3>
-                    <p>Developing intelligent systems that learn, adapt, and solve complex problems autonomously.</p>
-                    <div class="future-skills">
-                        <span class="future-skill">Neural Networks</span>
-                        <span class="future-skill">Deep Learning</span>
-                        <span class="future-skill">Computer Vision</span>
-                    </div>
-                </div>
-                <div class="future-card" data-category="iot">
-                    <div class="future-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>Internet of Things (IoT)</h3>
-                    <p>Connecting devices and systems to create smart, interconnected environments.</p>
-                    <div class="future-skills">
-                        <span class="future-skill">Embedded Systems</span>
-                        <span class="future-skill">Sensor Networks</span>
-                        <span class="future-skill">Edge Computing</span>
-                    </div>
-                </div>
-                <div class="future-card" data-category="robotics">
-                    <div class="future-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Robotics & Automation</h3>
-                    <p>Building intelligent machines that enhance human capabilities and productivity.</p>
-                    <div class="future-skills">
-                        <span class="future-skill">Control Systems</span>
-                        <span class="future-skill">Computer Vision</span>
-                        <span class="future-skill">Autonomous Navigation</span>
-                    </div>
-                </div>
-                <div class="future-card" data-category="cybersecurity">
-                    <div class="future-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Cybersecurity</h3>
-                    <p>Protecting digital systems and data from evolving threats and vulnerabilities.</p>
-                    <div class="future-skills">
-                        <span class="future-skill">Cryptography</span>
-                        <span class="future-skill">Network Security</span>
-                        <span class="future-skill">Ethical Hacking</span>
-                    </div>
-                </div>
-                <div class="future-card" data-category="quantum">
-                    <div class="future-icon">
-                        <i class="fas fa-atom"></i>
-                    </div>
-                    <h3>Quantum Computing</h3>
-                    <p>Harnessing quantum mechanics to solve problems beyond classical computing limits.</p>
-                    <div class="future-skills">
-                        <span class="future-skill">Quantum Algorithms</span>
-                        <span class="future-skill">Quantum Circuits</span>
-                        <span class="future-skill">Quantum Cryptography</span>
-                    </div>
-                </div>
-                <div class="future-card" data-category="biotech">
-                    <div class="future-icon">
-                        <i class="fas fa-dna"></i>
-                    </div>
-                    <h3>Biomedical Engineering</h3>
-                    <p>Integrating technology with healthcare to improve medical diagnostics and treatment.</p>
-                    <div class="future-skills">
-                        <span class="future-skill">Medical Devices</span>
-                        <span class="future-skill">Bioinformatics</span>
-                        <span class="future-skill">Digital Health</span>
-                    </div>
-                </div>
-            </div>
-            <div class="career-path">
-                <h3>My Career Journey</h3>
-                <div class="path-timeline">
-                    <div class="path-step current">
-                        <div class="step-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="step-content">
-                            <h4>Computer Engineering Student</h4>
-                            <p>Building foundations in hardware and software</p>
-                            <span class="step-year">2023 - Present</span>
-                        </div>
-                    </div>
-                    <div class="path-step future">
-                        <div class="step-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="step-content">
-                            <h4>Software Engineer</h4>
-                            <p>Developing innovative applications and systems</p>
-                            <span class="step-year">2025 - 2027</span>
-                        </div>
-                    </div>
-                    <div class="path-step future">
-                        <div class="step-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <div class="step-content">
-                            <h4>Systems Architect</h4>
-                            <p>Designing complex integrated solutions</p>
-                            <span class="step-year">2027 - 2030</span>
-                        </div>
-                    </div>
-                    <div class="path-step future">
-                        <div class="step-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <div class="step-content">
-                            <h4>Technology Leader</h4>
-                            <p>Leading teams and driving innovation</p>
-                            <span class="step-year">2030+</span>
+                        <div class="profile-info">
+                            <h3>Joseph Boidy</h3>
+                            <p>Computer Engineering</p>
+                            <div class="profile-links">
+                                <a href="https://github.com/LeBoid" target="_blank" aria-label="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/joseph-boidy" target="_blank" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="mailto:Gnamien.A.Boidy-2@ou.edu" aria-label="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -234,31 +135,373 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Engineering the Future, One Circuit at a Time</p>
+            </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>
-                        I'm a dedicated Computer Engineering student at the University of Oklahoma with a passion for 
-                        technology and innovation. My academic journey has equipped me with strong foundations in 
-                        programming, data structures, and electrical engineering principles.
-                    </p>
-                    <p>
-                        I'm actively involved in research projects, particularly in the field of data science and 
-                        artificial intelligence. My work includes analyzing disinformation spread on social media 
-                        platforms and developing autonomous navigation systems.
-                    </p>
-                    <div class="about-details">
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Norman, OK</span>
+                    <div class="about-card">
+                        <h3>Academic Journey</h3>
+                        <p>
+                            I'm a dedicated Computer Engineering student at the University of Oklahoma, 
+                            pursuing a Bachelor of Science with a minor in Computer Science. My academic 
+                            focus spans from digital signal processing to artificial intelligence applications.
+                        </p>
+                        <div class="about-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>University of Oklahoma</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2023 - 2026</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>GPA: 3.35/4.00</span>
+                            </div>
                         </div>
-                        <div class="detail-item">
-                            <i class="fas fa-phone"></i>
-                            <span>405-992-6078</span>
+                    </div>
+                    <div class="about-card">
+                        <h3>Research & Innovation</h3>
+                        <p>
+                            Currently collaborating with Dr. Cheng Samuel on disinformation analysis research, 
+                            utilizing YouTube Data API to analyze social media patterns. My work focuses on 
+                            data science applications in cybersecurity and information integrity.
+                        </p>
+                        <div class="research-tags">
+                            <span class="research-tag">Data Science</span>
+                            <span class="research-tag">API Development</span>
+                            <span class="research-tag">Social Media Analysis</span>
                         </div>
-                        <div class="detail-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>Gnamien.A.Boidy-2@ou.edu</span>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="skills-preview">
+                        <h3>Core Competencies</h3>
+                        <div class="skill-bars">
+                            <div class="skill-bar">
+                                <span class="skill-name">Digital Signal Processing</span>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-width="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <span class="skill-name">Embedded Systems</span>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <span class="skill-name">AI/ML Applications</span>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-width="80"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <span class="skill-name">Data Analysis</span>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-width="88"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Innovative Solutions Across Multiple Domains</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card featured">
+                    <div class="project-header">
+                        <div class="project-badge">Featured</div>
+                        <h3>Autonomous Road Navigation</h3>
+                        <p class="project-subtitle">NVIDIA JetBot with ResNet18</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Developed road-following navigation using ResNet18-based regression for steering prediction, 
+                        integrating TensorRT-optimized models for real-time image inference and collision detection.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorRT</span>
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">ROS</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/AI2025-final-project-submission/Team_4/tree/main" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                            View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Multiway Search Tree (M-Tree)</h3>
+                        <p class="project-subtitle">Dynamic Tree Balancing Algorithm</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Implemented a rebuild operation for dynamic tree balancing, ensuring efficiency in large datasets 
+                        with optimized memory management and pointer-based tree structures.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Data Structures</span>
+                            <span class="tech-tag">Algorithms</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/LeBoid/MTree-Project" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                            View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Disinformation Analysis Research</h3>
+                        <p class="project-subtitle">YouTube Data API Integration</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Collaborating with Dr. Cheng Samuel to analyze disinformation spread on YouTube, 
+                        developing Python scripts for data scraping, cleaning, and preprocessing large datasets.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">YouTube API</span>
+                            <span class="tech-tag">Data Analysis</span>
+                            <span class="tech-tag">Pandas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ECE Design Project Section -->
+    <section id="ece-design" class="ece-design">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ECE 2713 Design Project</h2>
+                <p class="section-subtitle">Digital Signal Processing & Audio Filtering</p>
+            </div>
+            
+            <div class="design-overview">
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-waveform-lines"></i>
+                    </div>
+                    <h3>Project Overview</h3>
+                    <p>Professional digital audio processing using MATLAB for signal analysis, 
+                    filter design, and noise reduction. Demonstrates advanced DSP concepts including 
+                    Butterworth filters, frequency domain analysis, and real-time audio processing.</p>
+                </div>
+            </div>
+
+            <div class="design-content">
+                <div class="design-tabs">
+                    <button class="tab-btn active" data-tab="problem1">
+                        <i class="fas fa-music"></i>
+                        Problem 1: Pure Tone Generation
+                    </button>
+                    <button class="tab-btn" data-tab="problem2">
+                        <i class="fas fa-filter"></i>
+                        Problem 2: Signal Filtering
+                    </button>
+                    <button class="tab-btn" data-tab="problem3">
+                        <i class="fas fa-shield-alt"></i>
+                        Problem 3: Noise Reduction
+                    </button>
+                </div>
+
+                <div class="tab-content active" id="problem1">
+                    <div class="problem-header">
+                        <h3>Pure Tone Generation & Analysis</h3>
+                        <p>Creating and analyzing digital audio signals with specific frequencies</p>
+                    </div>
+                    <div class="problem-content">
+                        <div class="code-section">
+                            <h4>MATLAB Implementation</h4>
+                            <pre><code class="language-matlab">% Problem 1a: 440 Hz Pure Tone
+Fs = 44100;           % Sampling frequency
+N = Fs * 2;          % 2-second signal
+n = 0:N-1;           % Time vector
+f_analog = 440;      % Analog frequency
+w_dig = 2*pi*f_analog/Fs;  % Digital frequency
+x = cos(w_dig * n);  % Pure tone signal
+
+% Normalize and play
+x = x / max(abs(x));
+sound(x, Fs, 16);
+
+% Frequency domain analysis
+X = fftshift(fft(x));
+Xmag = abs(X);
+XmagdB = 20*log10(Xmag);
+
+% Plot frequency response
+w = -pi:2*pi/N:pi-2*pi/N;
+f = w * Fs / (2*pi);
+figure(1);
+plot(f, XmagdB);
+title('Centered DFT Magnitude for 440 Hz Pure Tone');
+xlabel('Analog Frequency (Hz)');
+ylabel('Magnitude (dB)');</code></pre>
+                        </div>
+                        <div class="results-section">
+                            <h4>Key Results</h4>
+                            <ul>
+                                <li>Generated 2-second 440 Hz pure tone (A4 note)</li>
+                                <li>Sampling rate: 44.1 kHz (CD quality)</li>
+                                <li>Frequency domain analysis using FFT</li>
+                                <li>Successfully demonstrated audio playback and file I/O</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="problem2">
+                    <div class="problem-header">
+                        <h3>Digital Butterworth Filter Design</h3>
+                        <p>Lowpass and highpass filter implementation for signal separation</p>
+                    </div>
+                    <div class="problem-content">
+                        <div class="filter-demo">
+                            <h4>Interactive Filter Demonstration</h4>
+                            <div class="filter-controls">
+                                <div class="control-group">
+                                    <label>Signal Type:</label>
+                                    <select id="signal-type">
+                                        <option value="mixed">Mixed Signal (250Hz + Chirp)</option>
+                                        <option value="tone1">1kHz Pure Tone</option>
+                                        <option value="tone3">3kHz Pure Tone</option>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label>Filter Type:</label>
+                                    <select id="filter-type">
+                                        <option value="lowpass">Lowpass Filter</option>
+                                        <option value="highpass">Highpass Filter</option>
+                                    </select>
+                                </div>
+                                <button id="apply-filter" class="btn btn-primary">
+                                    <i class="fas fa-play"></i>
+                                    Apply Filter
+                                </button>
+                            </div>
+                            <div class="filter-visualization">
+                                <canvas id="filter-canvas" width="600" height="300"></canvas>
+                                <div class="filter-info">
+                                    <div class="info-item">
+                                        <span class="info-label">Passband Edge:</span>
+                                        <span class="info-value" id="passband-edge">250 Hz</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Stopband Edge:</span>
+                                        <span class="info-value" id="stopband-edge">1000 Hz</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Filter Order:</span>
+                                        <span class="info-value" id="filter-order">12</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-section">
+                            <h4>Filter Design Code</h4>
+                            <pre><code class="language-matlab">% Butterworth Filter Design
+Wp = 0.4;    % Normalized passband edge
+Ws = 0.6;    % Normalized stopband edge
+Rp = 1;      % Passband ripple (dB)
+Rs = 60;     % Stopband attenuation (dB)
+
+[Nf, Wn] = buttord(Wp, Ws, Rp, Rs);
+[num, den] = butter(Nf, Wn);
+
+% Apply filter
+y = filter(num, den, x);
+
+% Frequency response
+freqz(num, den, 1024);</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="problem3">
+                    <div class="problem-header">
+                        <h3>Noise Reduction & Signal Recovery</h3>
+                        <p>Designing filters to remove noise from corrupted audio signals</p>
+                    </div>
+                    <div class="problem-content">
+                        <div class="noise-demo">
+                            <h4>Noise Reduction Process</h4>
+                            <div class="noise-steps">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <h5>Signal Analysis</h5>
+                                    <p>Analyze frequency spectrum of noisy signal and noise sample</p>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <h5>Filter Design</h5>
+                                    <p>Design lowpass Butterworth filter based on spectral analysis</p>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <h5>Signal Recovery</h5>
+                                    <p>Apply filter to recover original signal from noise</p>
+                                </div>
+                            </div>
+                            <div class="audio-samples">
+                                <div class="sample-item">
+                                    <h5>Original Noisy Signal</h5>
+                                    <audio controls>
+                                        <source src="Design project/noisysig.wav" type="audio/wav">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                                <div class="sample-item">
+                                    <h5>Filtered Signal</h5>
+                                    <audio controls>
+                                        <source src="Design project/filteredsig.wav" type="audio/wav">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-section">
+                            <h4>Noise Reduction Implementation</h4>
+                            <pre><code class="language-matlab">% Read noisy signal and noise sample
+[noisy_sig, Fs] = audioread('noisysig.wav');
+[noise_samp, ~] = audioread('noisesamp.wav');
+
+% Analyze frequency spectra
+X_noisy = fftshift(fft(noisy_sig));
+X_noise = fftshift(fft(noise_samp));
+
+% Design lowpass filter based on analysis
+Wp = 0.3;  % Passband edge (normalized)
+Ws = 0.5;  % Stopband edge (normalized)
+Rp = 1;    % Passband ripple
+Rs = 60;   % Stopband attenuation
+
+[Nf, Wn] = buttord(Wp, Ws, Rp, Rs);
+[num, den] = butter(Nf, Wn);
+
+% Apply filter
+filtered_sig = filter(num, den, noisy_sig);
+filtered_sig = filtered_sig / max(abs(filtered_sig));
+
+% Save filtered signal
+audiowrite('filteredsig.wav', filtered_sig, Fs);</code></pre>
                         </div>
                     </div>
                 </div>
@@ -269,202 +512,141 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">Skills & Certifications</h2>
+            <div class="section-header">
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-subtitle">Comprehensive Engineering Toolkit</p>
+            </div>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">C</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">HTML/CSS</span>
-                        <span class="skill-tag">SQL</span>
+                    <div class="category-header">
+                        <i class="fas fa-code"></i>
+                        <h3>Programming Languages</h3>
                     </div>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Developer Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">Gephi</span>
-                        <span class="skill-tag">Eclipse</span>
-                        <span class="skill-tag">Jupyter Notebook</span>
-                        <span class="skill-tag">RStudio</span>
-                        <span class="skill-tag">MobaXterm</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Undergraduate Data Science and Analytics Certificate</span>
-                        <span class="skill-tag">Google Certification of Analytics</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-card">
-                <div class="education-header">
-                    <h3>University of Oklahoma</h3>
-                    <span class="education-date">Jan 2023 - December 2026</span>
-                </div>
-                <div class="education-details">
-                    <p class="degree">Bachelor of Science in Computer Engineering</p>
-                    <p class="minor">Minor in Computer Science</p>
-                    <p class="gpa">GPA: 3.35/4.00</p>
-                </div>
-                <div class="coursework">
-                    <h4>Relevant Coursework:</h4>
-                    <div class="course-tags">
-                        <span class="course-tag">Artificial Intelligence</span>
-                        <span class="course-tag">Electrical Circuit I</span>
-                        <span class="course-tag">Data Structures & Algorithms</span>
-                        <span class="course-tag">Discrete Structures</span>
-                        <span class="course-tag">Digital Design</span>
-                        <span class="course-tag">Digital Signal and Filtering</span>
-                        <span class="course-tag">Programming Structures and Abstractions</span>
-                        <span class="course-tag">Probability & Statistics</span>
-                        <span class="course-tag">Random Processing</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Relevant Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Research Assistant - Disinformation Analysis</h3>
-                        <span class="project-date">June 2024 - August 2024</span>
-                    </div>
-                    <p class="project-location">University of Oklahoma, Norman, Oklahoma</p>
-                    <ul class="project-details">
-                        <li>Collaborating with Dr. Cheng Samuel in the ECE department and the Data Institute for Societal Challenges to research and analyze the spread of disinformation on YouTube.</li>
-                        <li>Utilizing the YouTube Data API to collect large datasets, including metadata, comments, and video statistics, focusing on content flagged for disinformation.</li>
-                        <li>Developing and implementing Python scripts for data scraping, cleaning, and preprocessing to facilitate further analysis.</li>
-                    </ul>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Multiway Search Tree (M-Tree)</h3>
-                        <span class="project-date">October 2024</span>
-                    </div>
-                    <ul class="project-details">
-                        <li>Developed a rebuild operation for dynamic tree balancing, ensuring efficiency in large datasets.</li>
-                        <li>Applied concepts of memory management and pointer-based tree structures.</li>
-                    </ul>
-                    <div class="project-links">
-                        <a href="https://github.com/LeBoid/MTree-Project" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> View on GitHub
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Autonomous Road Navigation with NVIDIA JetBot</h3>
-                        <span class="project-date">Jan 2025 - March 2025</span>
-                    </div>
-                    <ul class="project-details">
-                        <li>Developed road-following navigation using a ResNet18-based regression model for steering prediction.</li>
-                        <li>Programmed JetBot with Python, integrating TensorRT-optimized models for real-time image inference.</li>
-                        <li>Implemented object avoidance using pre-trained collision detection models.</li>
-                        <li>Investigated and documented limitations of person-following due to broken dependencies, ensuring project integrity.</li>
-                        <li>Demonstrated successful real-time navigation in controlled environments with video documentation.</li>
-                    </ul>
-                    <div class="project-links">
-                        <a href="https://github.com/AI2025-final-project-submission/Team_4/tree/main" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> View on GitHub
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card interactive-project">
-                    <div class="project-header">
-                        <h3>Interactive Portfolio Design</h3>
-                        <span class="project-date">December 2024</span>
-                    </div>
-                    <p class="project-location">Personal Portfolio Website</p>
-                    <ul class="project-details">
-                        <li>Designed and developed a responsive portfolio website with modern animations and interactive elements.</li>
-                        <li>Implemented dynamic typing effects, hover animations, and scroll-triggered animations using JavaScript.</li>
-                        <li>Created an interactive "Future Possibilities" section showcasing computer engineering career paths.</li>
-                        <li>Integrated professional profile picture with hover effects and social media links.</li>
-                        <li>Built with HTML5, CSS3, and JavaScript for optimal performance and user experience.</li>
-                    </ul>
-                    <div class="project-demo">
-                        <h4>Try the Interactive Features:</h4>
-                        <div class="demo-buttons">
-                            <button class="demo-btn" onclick="triggerTypingEffect()">
-                                <i class="fas fa-keyboard"></i> Typing Effect
-                            </button>
-                            <button class="demo-btn" onclick="triggerFutureAnimation()">
-                                <i class="fas fa-rocket"></i> Future Animation
-                            </button>
-                            <button class="demo-btn" onclick="triggerProfileAnimation()">
-                                <i class="fas fa-user"></i> Profile Animation
-                            </button>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">C/C++</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Java</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">MATLAB</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="88"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-links">
-                        <a href="#future" class="project-link">
-                            <i class="fas fa-eye"></i> View Future Section
-                        </a>
-                        <a href="#home" class="project-link">
-                            <i class="fas fa-home"></i> Back to Hero
-                        </a>
-                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Leadership Experience</h2>
-            <div class="experience-card">
-                <div class="experience-header">
-                    <h3>Student Supervisor</h3>
-                    <span class="experience-date">March 2023 - Present</span>
+                <div class="skill-category">
+                    <div class="category-header">
+                        <i class="fas fa-microchip"></i>
+                        <h3>Hardware & Embedded</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Digital Signal Processing</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Embedded Systems</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Circuit Design</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">NVIDIA Jetson</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="85"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="experience-location">Residential College (Dunham/Headington), University of Oklahoma, Norman, OKC</p>
-                <div class="experience-details">
-                    <div class="experience-item">
-                        <h4><i class="fas fa-users"></i> Leading Staff</h4>
-                        <p>Instructing and guiding employees in the back of the kitchen to ensure that every member of staff is executing their job in an effective and efficient manner while simultaneously staying within company guidelines and regulations.</p>
-                    </div>
-                    <div class="experience-item">
-                        <h4><i class="fas fa-check-circle"></i> Quality Assurance</h4>
-                        <p>Carried out routine checks on all of the restaurant's food and food storage, including inspection of all poultry, meat, produce, and dairy products and making sure all refrigerators stay within a certain temperature range in order to preserve food for as long as possible.</p>
-                    </div>
-                    <div class="experience-item">
-                        <h4><i class="fas fa-graduation-cap"></i> Training and Development</h4>
-                        <p>Developed and implemented comprehensive training programs for new hires, ensuring they quickly adapt to the workflow and standards of the kitchen. Mentored junior staff, providing guidance and support to help them excel in their roles.</p>
-                    </div>
-                    <div class="experience-item">
-                        <h4><i class="fas fa-handshake"></i> Conflict Resolution</h4>
-                        <p>Successfully mediated conflicts among staff, fostering a collaborative and positive work environment. Addressed employee concerns promptly and fairly, ensuring that any issues were resolved in a manner that maintained team cohesion and morale.</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="organizations">
-                <h3>Organizations</h3>
-                <div class="org-tags">
-                    <span class="org-tag">Artificial Intelligence Organization at the University of Oklahoma (OUAI)</span>
-                    <span class="org-tag">Data Science and Analytics Club</span>
-                    <span class="org-tag">OU IEEE</span>
+                <div class="skill-category">
+                    <div class="category-header">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI & Data Science</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Machine Learning</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="82"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Computer Vision</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Data Analysis</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">TensorRT</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="78"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-header">
+                        <i class="fas fa-tools"></i>
+                        <h3>Development Tools</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Git & GitHub</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">VS Code</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Jupyter Notebook</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Docker</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-level="70"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -473,40 +655,64 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's Connect and Build Something Amazing</p>
+            </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
                             <p>Gnamien.A.Boidy-2@ou.edu</p>
+                            <button class="copy-btn" data-text="Gnamien.A.Boidy-2@ou.edu">
+                                <i class="fas fa-copy"></i>
+                                Copy
+                            </button>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Phone</h4>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
                             <p>405-992-6078</p>
+                            <button class="copy-btn" data-text="405-992-6078">
+                                <i class="fas fa-copy"></i>
+                                Copy
+                            </button>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Norman, OK</p>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Norman, Oklahoma</p>
                         </div>
                     </div>
                 </div>
-                <div class="social-links">
-                    <a href="https://github.com/LeBoid" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/joseph-boidy" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn</span>
-                    </a>
+                <div class="contact-social">
+                    <h3>Connect With Me</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/LeBoid" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/joseph-boidy" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="mailto:Gnamien.A.Boidy-2@ou.edu" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -515,10 +721,28 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Joseph Boidy. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Joseph Boidy</h3>
+                    <p>Computer Engineering Student</p>
+                    <p>University of Oklahoma</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Joseph Boidy. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 
